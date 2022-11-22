@@ -5,12 +5,6 @@ namespace App\Http\Controllers;
 use App\Traits\ReturnsJsonResponses;
 use App\Http\Requests\SubscribeRequest;
 use App\Services\SubscriptionService;
-use App\Services\PublicationService;
-use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class SubscriptionsController extends Controller
 {
