@@ -31,7 +31,8 @@ DB_PASSWORD=YOUR_MYSQL_PASSWORD
 Documentation available at: <a href="https://documenter.getpostman.com/view/12783380/2s8YsnWFQq">https://documenter.getpostman.com/view/12783380/2s8YsnWFQq</a>
 
 ### Running Test
-To testing the application using PHPUnit, run:
+
+To test the application using PHPUnit, run:
 ```
 ./vendor/bin/phpunit 
 ```
