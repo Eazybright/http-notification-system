@@ -2,6 +2,11 @@
 
 This project focuses on http notification system in which a server (or set of servers) will keep track of topics->subscribers where a topic is a string and a subscriber is an HTTP endpoint. When a message is published on a topic, it should be forwarded to all subscriber endpoints.
 
+Clone the app:
+```
+https://github.com/Eazybright/http-notification-system.git
+```
+
 #### Database Setup
 This application needs a MySQL database running on the host machine to work.
 
