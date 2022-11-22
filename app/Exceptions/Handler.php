@@ -45,12 +45,6 @@ class Handler extends ExceptionHandler
             $message = $exception->getMessage();
             $messageArray = json_decode($message, true);
             return $this->validationErrorResponse("An error occurred. Invalid Params.", $messageArray, 422);
-      
-            // return response()->json([
-            //     'message' => ,
-            //     'errors' => $message, 
-            //     'status' => false
-            // ], 422);
         });
     }
 }

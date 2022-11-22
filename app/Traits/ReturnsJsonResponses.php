@@ -2,8 +2,6 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\MessageBag;
-
 trait ReturnsJsonResponses
 {
   public function successResponse($data=[], $http_status=200)
