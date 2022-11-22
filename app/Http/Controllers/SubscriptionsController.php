@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Traits\ReturnsJsonResponses;
 use App\Http\Requests\SubscribeRequest;
 use App\Services\SubscriptionService;
+use App\Services\PublicationService;
 use Superbalist\PubSub\Adapters\LocalPubSubAdapter;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Log;
@@ -22,7 +23,10 @@ class SubscriptionsController extends Controller
     $this->subscriptionService = $subscriptionService;
   }
 
-  //
+  /**
+   * Subscribe to a topic
+   * @param string topic
+   */
   public function subscribe(SubscribeRequest $request, string $topic)
   {
     $topic = strip_tags($topic); //remove unneccessary characters.
@@ -41,36 +45,5 @@ class SubscriptionsController extends Controller
     }
 
     return $this->successResponse(['url' => $request->url, 'topic' => $topic]);
-  }
-
-  public function publish(Request $request, $topic)
-  {
-    if(empty($request->all())){
-      return $this->errorResponse('Request body must contain a valid param', 'publish failed', 400);
-    }
-
-    // $subscriptionExist = $this->subscriptionService->subscriptionExist($topic);
-
-    // if(!$subscriptionExist){
-    //   return $this->errorResponse('Subscription topic not found', 'publish failed', 400);
-    // }
-
-    $publish = $this->subscriptionService->publishMessage($topic, $request->all());
-    if(isset($publish['publish_status']) && !$publish['publish_status']){
-      return $this->errorResponse('Topic not published', 500);
-    }
-
-    return $this->successResponse([
-      'topic' => $topic,
-      'data' => $request->all()
-    ]);
-
-  }
-
-  public function notifySubscribers($topic)
-  {
-    // dd("hello");
-    // return "hello";
-    return $this->subscriptionService->notifySubscribers($topic);
   }
 }

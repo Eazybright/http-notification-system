@@ -19,6 +19,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('topic')->unique();
             $table->string('host');
             $table->timestamps();
+            $table->index(['topic', 'host']);
         });
     }
 

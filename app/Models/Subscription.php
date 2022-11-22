@@ -7,18 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subscription extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $table = 'subscriptions';
+  protected $table = 'subscriptions';
 
-    protected $fillable = [
-      'topic',
-      'url',
-      'host'
-    ];
+  protected $fillable = [
+    'topic',
+    'url',
+    'host'
+  ];
 
-    // public static function createSubscription()
-    // {
-    //   return Subscription::
-    // }
+  /*
+  |--------------------------------------------------------------------------
+  | RELATIONS
+  |--------------------------------------------------------------------------
+  */
+  public function message()
+  {
+    return $this->hasMany(Message::class, 'subscription_id');
+  }
 }

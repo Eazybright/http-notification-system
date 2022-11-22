@@ -21,6 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(SubscriptionsController::class)->group(function () {
   Route::post('subscribe/{topic}', 'subscribe');
+});
+
+Route::controller(PublicationsController::class)->group(function(){
   Route::post('publish/{topic}', 'publish');
-  Route::post('notify/{topic}', 'notifySubscribers');
+  Route::post('test1', 'getMesaage');
+  Route::post('test2', 'getMesaage');
 });

@@ -19,6 +19,7 @@ class CreatePublicationsTable extends Migration
             $table->longText('body');
             $table->boolean('published')->default(false);
             $table->timestamps();
+            $table->index('topic');
         });
     }
 

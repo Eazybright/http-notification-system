@@ -7,13 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publication extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $table = 'publications';
+  protected $table = 'publications';
 
-    protected $fillable = [
-      'topic',
-      'body',
-      'published'
-    ];
+  protected $fillable = [
+    'topic',
+    'body',
+    'published'
+  ];
+
+    /*
+	|--------------------------------------------------------------------------
+	| RELATIONS
+	|--------------------------------------------------------------------------
+	*/
+  public function message()
+  {
+    return $this->hasMany(Message::class, 'publication_id');
+  }
 }

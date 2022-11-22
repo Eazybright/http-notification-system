@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Publication;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Redis;
 
@@ -23,17 +22,14 @@ class SubscriptionService
     return Subscription::whereTopic($topic)->exists();
   }
 
-  public function publishMessage(string $topic, array $payloadData)
+  public function getSubscribersByTopic(string $topic)
   {
-    $publication = new Publication;
-    $publication->body = json_encode($payloadData);
-    $publication->topic = $topic;
-    $publication->save();
-    $publish_status = Redis::publish($topic, json_encode($payloadData));
-    return [
-      'publication_id' => $publication->id,
-      'publish_status' => $publish_status
-    ];
+    return Subscription::whereTopic($topic)->select('id')->get();
+  }
+
+  public function getSubscriberByHost(string $host)
+  {
+    return Subscription::whereHost($host)->select('id')->get();
   }
 
   public function notifySubscribers(string $topic)

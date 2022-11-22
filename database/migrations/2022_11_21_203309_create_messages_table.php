@@ -15,7 +15,9 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('publication_id');
+            $table->foreignId('publication_id')->constrained('publications');
+            $table->foreignId('subscriber_id')->constrained('subscriptions');
+            $table->boolean('seen')->default(false);
             $table->timestamps();
         });
     }
