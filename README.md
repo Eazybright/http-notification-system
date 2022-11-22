@@ -29,3 +29,14 @@ DB_PASSWORD=YOUR_MYSQL_PASSWORD
 
 ### API Documentation
 Documentation available at: <a href="https://documenter.getpostman.com/view/12783380/2s8YsnWFQq">https://documenter.getpostman.com/view/12783380/2s8YsnWFQq</a>
+
+### Running Test
+To testing the application using PHPUnit, run:
+```
+./vendor/bin/phpunit 
+```
+
+To run specific tests, you can sustitute the filter argument with the name of the available test methods:
+```
+./vendor/bin/phpunit --filter=testSubsciberGetMessage
+```
