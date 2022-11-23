@@ -69,6 +69,10 @@ class PublicationService
       return false;
     }
 
+    // update the seen status
+    $message->seen = true;
+    $message->save();
+
     return [
       'topic' => $message->publication->topic,
       'data' => json_decode($message->publication->body),
